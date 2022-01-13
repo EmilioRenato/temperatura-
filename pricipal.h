@@ -17,6 +17,10 @@ public:
 public slots:
     void centAfarhr(int cent);
     void farAcent(int i);
+    void farAKelvin(int i);
+    void kelvinAfar(int i);
+    void centAkelvin (int i);
+    void kelvinAcent(int i);
 
 private:
     Ui::pricipal *ui;
