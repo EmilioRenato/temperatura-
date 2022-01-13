@@ -12,6 +12,17 @@ pricipal::pricipal(QWidget *parent)
             this, SLOT(centAfarhr(int)));
     connect(ui->inFaren,SIGNAL(valueChanged(int)),
             this, SLOT(farAcent(int)));
+
+    connect(ui->inkelvin,SIGNAL(valueChanged(int)),
+            this, SLOT(kelvinAfar(int)));
+    connect(ui->inFaren,SIGNAL(valueChanged(int)),
+            this, SLOT(farAKelvin(int)));
+
+    connect(ui->inkelvin,SIGNAL(valueChanged(int)),
+            this, SLOT(kelvinAcent(int)));
+    connect(ui->inCent,SIGNAL(valueChanged(int)),
+            this, SLOT(centAkelvin(int)));
+
 }
 
 pricipal::~pricipal()
@@ -35,3 +46,36 @@ void pricipal::farAcent(int i)
     }
 }
 
+void pricipal::farAKelvin(int i)
+{
+    if (ui->inFaren->hasFocus()){
+
+        int k = ((i-1));
+        ui->inkelvin->setValue(k);
+    }
+}
+
+void pricipal::kelvinAfar(int i)
+{
+    if (ui->inkelvin->hasFocus()){
+        int f = ((i-3.15)*1.8)+32;
+
+        ui->inFaren->setValue(f);
+    }
+}
+
+void pricipal::centAkelvin(int i)
+{
+    if (ui->inCent->hasFocus()){
+        int f = ((i-3.5)*2);
+        ui->inkelvin->setValue(f);
+    }
+}
+
+void pricipal::kelvinAcent(int i)
+{
+    if (ui->inkelvin->hasFocus()){
+        int f = ((i-1.2)/3);
+        ui->inCent->setValue(f);
+    }
+}
